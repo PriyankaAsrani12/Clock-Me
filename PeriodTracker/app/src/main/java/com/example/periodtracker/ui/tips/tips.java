@@ -1,4 +1,4 @@
-package com.example.periodtracker.ui;
+package com.example.periodtracker.ui.tips;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,8 +13,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.periodtracker.R;
-import com.example.periodtracker.ui.Settings.SettingsViewModel;
-import com.example.periodtracker.ui.slideshow.TipsViewModel;
 
 public class tips extends Fragment {
 
@@ -24,14 +22,8 @@ public class tips extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         tipsViewModel =
                 ViewModelProviders.of(this).get(TipsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
-        tipsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        View root = inflater.inflate(R.layout.fragment_tips, container, false);
+
         return root;
     }
 }

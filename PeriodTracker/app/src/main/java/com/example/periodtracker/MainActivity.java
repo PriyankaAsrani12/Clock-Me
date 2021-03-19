@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -14,15 +15,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        final int i=RegisterActivity.num;
+        Log.d("num",RegisterActivity.num+"");
 
 
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent homeIntent= new Intent(new Intent(MainActivity.this,RegisterActivity.class));
-                startActivity(homeIntent);
-                finish();
+                if(i==1){
+
+                    Intent homeIntent= new Intent(new Intent(MainActivity.this,navBar.class));
+                    startActivity(homeIntent);
+                    finish();
+                }
+                else{
+                    Intent homeIntent= new Intent(new Intent(MainActivity.this,RegisterActivity.class));
+                    startActivity(homeIntent);
+                    finish();
+                }
+
             }
         },4000);
 

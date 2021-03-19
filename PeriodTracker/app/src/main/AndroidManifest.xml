@@ -9,10 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".remedi3"></activity>
+        <activity android:name=".remedi2" />
+        <activity android:name=".remedi1" />
+        <activity android:name=".Cal" />
         <activity
             android:name=".navBar"
             android:label="@string/title_activity_nav_bar"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".register" />
         <activity android:name=".MainActivity">

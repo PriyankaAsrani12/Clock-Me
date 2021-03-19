@@ -1,4 +1,4 @@
-package com.example.periodtracker.ui.slideshow;
+package com.example.periodtracker.ui.tips;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
