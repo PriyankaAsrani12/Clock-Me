@@ -3,6 +3,7 @@ package com.example.periodtracker;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -60,8 +61,10 @@ public class RegisterActivity extends AppCompatActivity {
                 int len=Integer.parseInt(len_days.getText().toString());
                 int dur=Integer.parseInt(duration.getText().toString());
                 String din=din_date;
-
                 db.addUser(naam,emaill,len,dur,din);
+                Intent homeIntent= new Intent(new Intent(RegisterActivity.this,navBar.class));
+                startActivity(homeIntent);
+                finish();
 
             }
         });
