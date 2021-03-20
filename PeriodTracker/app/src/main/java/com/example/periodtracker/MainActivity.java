@@ -17,13 +17,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final int i=RegisterActivity.num;
         Log.d("num",RegisterActivity.num+"");
+        SessionManagement ss=new SessionManagement(MainActivity.this);
+        final String check =ss.getSesion();
 
 
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(i==1){
+                if(!check.equals("-1")){
 
                     Intent homeIntent= new Intent(new Intent(MainActivity.this,navBar.class));
                     startActivity(homeIntent);

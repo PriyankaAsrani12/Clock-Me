@@ -35,7 +35,7 @@
             android:paddingLeft="20dp"
             android:textSize="15dp"
             android:fontFamily="serif"
-            android:text="Clock Me \nMy Monthly Companion "
+            android:text="Clock Me \nMy Monthly \nCompanion "
             android:textColor="@android:color/black"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 

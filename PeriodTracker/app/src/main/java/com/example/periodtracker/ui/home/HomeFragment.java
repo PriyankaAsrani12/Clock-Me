@@ -16,6 +16,8 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.periodtracker.Cal;
 import com.example.periodtracker.R;
+import com.example.periodtracker.RegisterActivity;
+import com.example.periodtracker.SessionManagement;
 
 public class HomeFragment extends Fragment {
 
@@ -26,13 +28,25 @@ public class HomeFragment extends Fragment {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+
         Button cal=root.findViewById(R.id.cal);
+        Button logout=root.findViewById(R.id.logout);
         cal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent in=new Intent(HomeFragment.this.getActivity(), Cal.class);
                 startActivity(in);
 
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SessionManagement  ss=new SessionManagement(HomeFragment.this.getActivity());
+                ss.removeSession();
+                Intent in=new Intent(HomeFragment.this.getActivity(), RegisterActivity.class);
+                startActivity(in);
             }
         });
 

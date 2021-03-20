@@ -44,6 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
 
 
+
         select_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,10 +78,15 @@ public class RegisterActivity extends AppCompatActivity {
                 num=1;
                 db.addUser(naam,emaill,len,dur,din);
 
-                String data_date=db.getdate("sejal@gmail.com");
-                int d=db.getdur("sejal@gmail.com");
+
+                SessionManagement ss=new SessionManagement(RegisterActivity.this);
+
+                User user=new User(emaill);
+                ss.savesaession(user);
+                String n=ss.getSesion();
+                String data_date=db.getdate(n);
+                int d=db.getdur(n);
                 Log.d("dddd",data_date);
-//
                 int dayy=Integer.parseInt(data_date.substring(0,2));
                 int mon=Integer.parseInt(data_date.substring(3,4));
                 int year=Integer.parseInt(data_date.substring(5));
@@ -90,6 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
                 //Adding number of Days to the given date
                 Log.d("ddddddde",date3+"");
                 setAlarm("hello",date3.toString(),"9:00");
+
                 Intent homeIntent= new Intent(new Intent(RegisterActivity.this,navBar.class));
                 startActivity(homeIntent);
                 finish();

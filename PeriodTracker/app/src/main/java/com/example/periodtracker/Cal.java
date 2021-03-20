@@ -51,6 +51,7 @@ public class Cal extends AppCompatActivity {
 
         Event ev1=new Event(Color.RED,86400000 , "Periods Day");
         compactCalendar.addEvent(ev1);
+        compactCalendar.setEventIndicatorStyle(Color.WHITE);
 
 
 

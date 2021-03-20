@@ -16,7 +16,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.periodtracker.DatabaseHelper;
 import com.example.periodtracker.R;
+import com.example.periodtracker.SessionManagement;
 import com.example.periodtracker.graph;
 
 public class GalleryFragment extends Fragment {
@@ -32,12 +34,15 @@ public class GalleryFragment extends Fragment {
     ImageView ill;
     ImageView inlove;
     int score;
+    DatabaseHelper db;
     Button graphhh;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         galleryViewModel =
                 ViewModelProviders.of(this).get(GalleryViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
+        db=new DatabaseHelper(GalleryFragment.this.getActivity());
 
         happy = root.findViewById(R.id.happy);
         happy.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +50,9 @@ public class GalleryFragment extends Fragment {
             public void onClick(View v) {
                 score = 10;
                 Log.d("happy",score+"");
+                SessionManagement ss=new SessionManagement(GalleryFragment.this.getActivity());
+                String n=ss.getSesion();
+                db.addmoods(n,score);
             }
         });
 
@@ -54,6 +62,9 @@ public class GalleryFragment extends Fragment {
             public void onClick(View v) {
                 score = 5;
                 Log.d("unhappy",score+"");
+                SessionManagement ss=new SessionManagement(GalleryFragment.this.getActivity());
+                String n=ss.getSesion();
+                db.addmoods(n,score);
             }
         });
 
@@ -63,6 +74,9 @@ public class GalleryFragment extends Fragment {
             public void onClick(View v) {
                 score = 2;
                 Log.d("mad",score+"");
+                SessionManagement ss=new SessionManagement(GalleryFragment.this.getActivity());
+                String n=ss.getSesion();
+                db.addmoods(n,score);
             }
         });
 
@@ -72,6 +86,9 @@ public class GalleryFragment extends Fragment {
             public void onClick(View v) {
                 score = 1;
                 Log.d("angry",score+"");
+                SessionManagement ss=new SessionManagement(GalleryFragment.this.getActivity());
+                String n=ss.getSesion();
+                db.addmoods(n,score);
             }
         });
 
@@ -81,6 +98,9 @@ public class GalleryFragment extends Fragment {
             public void onClick(View v) {
                 score = 7;
                 Log.d("bored",score+"");
+                SessionManagement ss=new SessionManagement(GalleryFragment.this.getActivity());
+                String n=ss.getSesion();
+                db.addmoods(n,score);
             }
         });
 
@@ -90,6 +110,9 @@ public class GalleryFragment extends Fragment {
             public void onClick(View v) {
                 score = 4;
                 Log.d("crying",score+"");
+                SessionManagement ss=new SessionManagement(GalleryFragment.this.getActivity());
+                String n=ss.getSesion();
+                db.addmoods(n,score);
             }
         });
 
@@ -99,6 +122,9 @@ public class GalleryFragment extends Fragment {
             public void onClick(View v) {
                 score = 9;
                 Log.d("inlove",score+"");
+                SessionManagement ss=new SessionManagement(GalleryFragment.this.getActivity());
+                String n=ss.getSesion();
+                db.addmoods(n,score);
             }
         });
 
@@ -108,6 +134,9 @@ public class GalleryFragment extends Fragment {
             public void onClick(View v) {
                 score = 3;
                 Log.d("ill",score+"");
+                SessionManagement ss=new SessionManagement(GalleryFragment.this.getActivity());
+                String n=ss.getSesion();
+                db.addmoods(n,score);
             }
         });
 
@@ -117,6 +146,9 @@ public class GalleryFragment extends Fragment {
             public void onClick(View v) {
                 score = 8;
                 Log.d("confused",score+"");
+                SessionManagement ss=new SessionManagement(GalleryFragment.this.getActivity());
+                String n=ss.getSesion();
+                db.addmoods(n,score);
             }
         });
 
