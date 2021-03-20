@@ -11,7 +11,7 @@
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/drop"
-            android:title="Logs" />
+            android:title="Mood Tracker" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/tips"
@@ -19,7 +19,7 @@
         <item
             android:id="@+id/nav_mood"
             android:icon="@drawable/mood_tracker"
-            android:title="Mood Tracker" />
+            android:title="Logs" />
 
         <item
             android:id="@+id/nav_settings"

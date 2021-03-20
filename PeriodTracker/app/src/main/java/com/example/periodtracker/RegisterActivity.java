@@ -1,9 +1,14 @@
 package com.example.periodtracker;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,7 +16,12 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.Date;
 
 public class RegisterActivity extends AppCompatActivity {
     EditText name, email, duration, len_days;
@@ -56,6 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         sub.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 String naam=name.getText().toString();
@@ -65,6 +76,20 @@ public class RegisterActivity extends AppCompatActivity {
                 String din=din_date;
                 num=1;
                 db.addUser(naam,emaill,len,dur,din);
+
+                String data_date=db.getdate("sejal@gmail.com");
+                int d=db.getdur("sejal@gmail.com");
+                Log.d("dddd",data_date);
+//
+                int dayy=Integer.parseInt(data_date.substring(0,2));
+                int mon=Integer.parseInt(data_date.substring(3,4));
+                int year=Integer.parseInt(data_date.substring(5));
+                LocalDate date3 = LocalDate.of(year, mon, dayy).plusDays(d);
+
+
+                //Adding number of Days to the given date
+                Log.d("ddddddde",date3+"");
+                setAlarm("hello",date3.toString(),"9:00");
                 Intent homeIntent= new Intent(new Intent(RegisterActivity.this,navBar.class));
                 startActivity(homeIntent);
                 finish();
@@ -76,5 +101,33 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
+
+
+    }
+
+    private void setAlarm(String text, String date, String time) {
+        AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(getApplicationContext(), AlarmBoardcast.class);
+        intent.putExtra("event", text);
+        intent.putExtra("time", date);
+        intent.putExtra("date", time);
+        String time1="9:22 AM";
+
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, PendingIntent.FLAG_ONE_SHOT);
+        String dateandtime = date + " " +time1.trim();
+
+        DateFormat formatter = new SimpleDateFormat("yyyy-mm-dd hh:mm");
+        try {
+            Date date1 = formatter.parse(dateandtime);
+            //am.set(AlarmManager.RTC_WAKEUP, date1.getTime(), pendingIntent);
+            am.set(AlarmManager.RTC_WAKEUP, date1.getTime() , pendingIntent) ;
+            Log.d("gggg",date1.getTime()+" ");
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        finish();
     }
 }
